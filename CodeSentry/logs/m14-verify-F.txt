@@ -1,0 +1,24 @@
+
+VisionGuard Assurance
+
+  Dataset Integrity     PASS
+  Model Integrity       PASS
+  Pipeline Integrity    PASS
+  Inference Integrity   PASS
+  Output Integrity      FAIL
+  Provenance            PASS
+
+  Overall: INTEGRITY VIOLATION
+  Anchored: yes
+
+Details:
+
+  dataset demo-dataset@1.0.0: PASS
+  model demo-clf@1.0.0: PASS
+  pipeline demo-cv@1.0.0: PASS
+  provenance: 9 record(s), 0 unsigned, head sha256:28cc45c15
+
+Findings:
+  [BLOCKER] VG-OUT-001 outputs/prediction.json: output file content does not match the recorded hash: expected c957f57dff9c4b8a716dab8e162b1b209d89932abef5125c7c2a581bbc616273, got a4994a93493f18270e38525d9a182fa5310f6a03c1e751f0c29c72c16a90e600
+
+Next: review the findings above and run "codesentry vision provenance --verify" for chain details.

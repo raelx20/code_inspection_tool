@@ -1,0 +1,14 @@
+﻿fixtures -> 0
+usage: vision badcmd -> exit 2 [OK]
+usage: vision --help -> exit 0 [OK]
+init non-TTY without --key-file -> exit 2 [OK]
+init with --key-file -> exit 0 [OK]
+register-data -> exit 0 [OK]
+register-model -> exit 0 [OK]
+verify-data (signed binding) -> exit 0 [OK]
+verify fresh store (unanchored) -> exit 3 [OK]
+  fresh overall=INCOMPLETE anchored=
+verify after dataset tamper -> exit 1 [OK]
+  tampered overall=INTEGRITY VIOLATION finding=VG-DATA-001
+verify storeless project -> exit 3 [OK]
+cleanup=ok

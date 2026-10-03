@@ -1,0 +1,17 @@
+▶ vision performance: single-pass hashing
+  ✔ should read each dataset file exactly once per register and per verify (6625.4519ms)
+  ✔ should hash the model file only once per full verification run (204.2677ms)
+  ✔ should give identical verdicts on repeated verification and leave the store untouched (493.586ms)
+✔ vision performance: single-pass hashing (7327.6523ms)
+▶ vision performance: heavy benchmarks
+  ﹣ should register and repeatedly verify 100000 small files within budget (5.6802ms) # set VG_PERF=1 to run the heavy benchmarks
+  ﹣ should register and verify a few huge sparse files with bounded memory (1.7997ms) # set VG_PERF=1 to run the heavy benchmarks
+✔ vision performance: heavy benchmarks (8.8954ms)
+ℹ tests 5
+ℹ suites 2
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 2
+ℹ todo 0
+ℹ duration_ms 10265.959

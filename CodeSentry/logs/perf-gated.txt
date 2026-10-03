@@ -1,0 +1,20 @@
+CANARY started=Sat 10/03/2026 21:43:32.52 VG_PERF=%VG_PERF% 
+▶ vision performance: single-pass hashing
+  ✔ should read each dataset file exactly once per register and per verify (4853.0076ms)
+  ✔ should hash the model file only once per full verification run (107.196ms)
+  ✔ should give identical verdicts on repeated verification and leave the store untouched (218.9296ms)
+✔ vision performance: single-pass hashing (5181.981ms)
+▶ vision performance: heavy benchmarks
+  ✔ should register and repeatedly verify 100000 small files within budget (412520.3464ms)
+  ℹ flood: create=84182ms register=102332ms verify=117836ms verify2=108146ms heapGrowth=79MiB manifest=14MiB
+  ✔ should register and verify a few huge sparse files with bounded memory (4385.1404ms)
+  ℹ huge: register=2625ms verify=1718ms heapGrowth=1MiB
+✔ vision performance: heavy benchmarks (416907.2846ms)
+ℹ tests 5
+ℹ suites 2
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 475427.3204

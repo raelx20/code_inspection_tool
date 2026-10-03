@@ -1,0 +1,24 @@
+
+VisionGuard Assurance
+
+  Dataset Integrity     FAIL
+  Model Integrity       PASS
+  Pipeline Integrity    PASS
+  Inference Integrity   PASS
+  Output Integrity      PASS
+  Provenance            PASS
+
+  Overall: INTEGRITY VIOLATION
+  Anchored: yes
+
+Details:
+
+  dataset demo-dataset@1.0.0: FAIL
+  model demo-clf@1.0.0: PASS
+  pipeline demo-cv@1.0.0: PASS
+  provenance: 9 record(s), 0 unsigned, head sha256:28cc45c15
+
+Findings:
+  [BLOCKER] VG-DATA-001 dataset/circle/00.png: content changed: expected 5d44fa9fa0c6d01c5bf9a7372ff39f569e3103116361df4f32a33df382fcb5e4, got fdedef7a4f771def1c02c7d5a32a18c6584ef9abe45ea1bf23bc4998cd123853
+
+Next: review the findings above and run "codesentry vision provenance --verify" for chain details.

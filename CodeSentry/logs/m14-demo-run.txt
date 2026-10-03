@@ -1,0 +1,17 @@
+VisionGuard CV pipeline demo
+  workspace : C:\Users\91797\AppData\Local\Temp\vg-sih-capture\demo-run
+  honesty   : hashes prove bit-identity only, never accuracy or safety
+  records   :
+    contributor A  key 87298ef53e0ad706511b3b531da08b0b  ops curate_dataset
+    contributor B  key 95935304d7bbbf62f5de3ba9d4218bef  ops preprocess
+    contributor C  key 311844ef2b00d2672400e69f7c8aa217  ops train,export_model
+    contributor D  key f1c82da5e8ddb049f9aaa8126d45e3f1  ops infer
+  dimensions:
+    Dataset     PASS  (32 files, sha256:56b76dace21bf25bf8ab1e096ec8a984dc97d2eb67bd4f134cb5c6c6969517ea)
+    Model       PASS  (safetensors, sha256:1c834b49444f062b575ad7677a65d5a715c37ccf5079705c0be91c048f962fd2)
+    Pipeline    PASS  (sha256:12f90274972bde3f0b6bb70a7998eef3985be35764e77e4df13c19bd50cefc0a)
+    Inference   PASS  (record sha256:d49d80e30300460b0daf602dc78275c1fd1cb15f8adbb8b0e61f259a6ce3b9b7)
+    Output      PASS  (expected sha256:c957f57dff9c4b8a716dab8e162b1b209d89932abef5125c7c2a581bbc616273)
+    Provenance  PASS  (9 records, head sha256:d49d80e30300460b0daf602dc78275c1fd1cb15f8adbb8b0e61f259a6ce3b9b7)
+  re-execution: identical output bytes
+  overall: VERIFIED

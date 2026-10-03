@@ -1,0 +1,21 @@
+
+VisionGuard Assurance
+
+  Dataset Integrity     PASS
+  Model Integrity       PASS
+  Pipeline Integrity    PASS
+  Inference Integrity   PASS
+  Output Integrity      PASS
+  Provenance            PASS
+
+  Overall: VERIFIED
+  Anchored: yes
+
+Details:
+
+  dataset demo-dataset@1.0.0: PASS
+  model demo-clf@1.0.0: PASS
+  pipeline demo-cv@1.0.0: PASS
+  provenance: 9 record(s), 0 unsigned, head sha256:28cc45c15
+
+Next: nothing — all dimensions verified.

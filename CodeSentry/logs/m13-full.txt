@@ -1,0 +1,1224 @@
+▶ Custom Analyzers
+  ▶ Bugs Analyzer
+    ✔ should detect off-by-one errors (2.9867ms)
+    ✔ should detect empty catch blocks (1.1852ms)
+    ✔ should detect unreachable code (1.9673ms)
+    ✔ should detect loose equality (1.0284ms)
+    ✔ should detect assignment in condition (1.1266ms)
+    ✔ should detect duplicate conditions (0.7979ms)
+    ✔ should detect Python assignment in condition and off-by-one (7.1401ms)
+    ✔ should not crash on clean code (0.8595ms)
+  ✔ Bugs Analyzer (18.3098ms)
+  ▶ Efficiency Analyzer
+    ✔ should detect nested loop search pattern (2.2911ms)
+    ✔ should detect string concatenation in loop (1.1534ms)
+    ✔ should detect sync calls in async context (1.0004ms)
+    ✔ should detect regex in loop (0.9506ms)
+  ✔ Efficiency Analyzer (5.7252ms)
+  ▶ Resources Analyzer
+    ✔ should detect setInterval without clearInterval (1.9027ms)
+    ✔ should detect event listeners without cleanup (0.9348ms)
+    ✔ should detect streams without close (1.8835ms)
+    ✔ should detect Python open without with (3.1611ms)
+    ✔ should detect unbounded cache (0.5609ms)
+  ✔ Resources Analyzer (8.8446ms)
+  ▶ Security Analyzer
+    ✔ should detect SQL injection in JavaScript (3.1332ms)
+    ✔ should detect eval code injection (0.5844ms)
+    ✔ should detect command injection (0.8748ms)
+    ✔ should detect path traversal (0.529ms)
+    ✔ should detect hardcoded secrets (0.4349ms)
+    ✔ should detect Python SQL injection (1.3743ms)
+    ✔ should detect Python eval and exec (0.8261ms)
+  ✔ Security Analyzer (8.1143ms)
+  ▶ Finding Structure
+    ✔ all findings should have required fields (1.622ms)
+  ✔ Finding Structure (1.7852ms)
+✔ Custom Analyzers (43.4447ms)
+▶ Discovery
+  ▶ Language Detection
+    ✔ should detect JavaScript files (0.6202ms)
+    ✔ should detect TypeScript files (0.1088ms)
+    ✔ should detect Python files (0.088ms)
+    ✔ should return null for unsupported files (0.1046ms)
+    ✔ isSupportedFile should work correctly (0.151ms)
+  ✔ Language Detection (1.8313ms)
+  ▶ File Enumeration
+    ✔ should enumerate files in a project (0.7046ms)
+    ✔ should skip node_modules (0.3519ms)
+  ✔ File Enumeration (1.2297ms)
+  ▶ Ignore Patterns
+    ✔ should load default ignore patterns (0.6428ms)
+    ✔ should match ignore patterns (0.3707ms)
+  ✔ Ignore Patterns (1.225ms)
+  ▶ Full Discovery
+    ✔ should discover files in clean-project (0.9784ms)
+    ✔ should discover files in broken-js (0.5119ms)
+    ✔ should discover files in mixed-project (0.5891ms)
+  ✔ Full Discovery (2.2417ms)
+✔ Discovery (7.1454ms)
+▶ End-to-End Fixture Tests
+  ▶ Security Fixtures
+    ✔ JS SQL injection fixture should be discovered (1.6489ms)
+    ✔ Python fixtures should be discovered (1.6417ms)
+  ✔ Security Fixtures (3.4098ms)
+  ▶ Custom Analyzer → Normalize → Aggregate Pipeline
+    ✔ should produce valid findings from bugs fixtures (31.9843ms)
+    ✔ should produce valid findings from efficiency fixtures (23.9426ms)
+    ✔ should produce valid findings from resource fixtures (20.7512ms)
+    ✔ clean project should produce fewer findings than broken project (13.8769ms)
+  ✔ Custom Analyzer → Normalize → Aggregate Pipeline (90.8625ms)
+✔ End-to-End Fixture Tests (94.4658ms)
+▶ Static Analyzers
+  ▶ Tool Availability Detection
+    ✔ should detect eslint availability without crashing (5.923ms)
+    ✔ should detect typescript availability without crashing (4.4675ms)
+    ✔ should detect ruff availability without crashing (4.3148ms)
+    ✔ should detect bandit availability without crashing (4.0061ms)
+    ✔ should detect semgrep availability without crashing (3.5758ms)
+    ✔ should cache availability and return identical result on repeated calls without re-executing (3.3954ms)
+    ✔ should allow clearing the availability cache (2.9412ms)
+  ✔ Tool Availability Detection (29.7485ms)
+  ▶ ESLint Runner
+    ✔ should return result object with expected structure (6.2294ms)
+    ✔ should return empty for no files (0.1942ms)
+  ✔ ESLint Runner (6.75ms)
+  ▶ TypeScript Runner
+    ✔ should return result object with expected structure (2.7525ms)
+  ✔ TypeScript Runner (2.8719ms)
+  ▶ Ruff Runner
+    ✔ should return result object with expected structure (3.2453ms)
+  ✔ Ruff Runner (3.3606ms)
+  ▶ Bandit Runner
+    ✔ should return result object with expected structure (3.6993ms)
+  ✔ Bandit Runner (5.4211ms)
+  ▶ Semgrep Runner
+    ✔ should return result object with expected structure (4.5643ms)
+  ✔ Semgrep Runner (4.9978ms)
+  ▶ TypeScript Line Parser
+    ✔ should parse valid tsc diagnostic lines (0.3328ms)
+    ✔ should return null for non-diagnostic lines (0.1254ms)
+  ✔ TypeScript Line Parser (0.5529ms)
+  ▶ Static Analyzer Orchestrator
+    ✔ should return array of results (0.215ms)
+    ✔ should handle empty discovery (0.1487ms)
+    ✔ all analyzers should be registered (0.061ms)
+  ✔ Static Analyzer Orchestrator (0.5064ms)
+✔ Static Analyzers (55.1064ms)
+▶ Pipeline Integration
+  ▶ Full Scan Pipeline
+    ✔ should complete a full scan with real project (684.8297ms)
+    ✔ should handle empty project gracefully (120.0763ms)
+  ✔ Full Scan Pipeline (805.9708ms)
+  ▶ Finding Pipeline
+    ✔ should normalize findings from different tools (0.4719ms)
+    ✔ should deduplicate findings across tools (0.2422ms)
+    ✔ should aggregate findings correctly (0.2393ms)
+    ✔ should normalize codesentry custom analyzer findings (0.27ms)
+  ✔ Finding Pipeline (1.5983ms)
+  ▶ AI Integration
+    ✔ should work with mock OpenRouter AI client and default factory (2.8316ms)
+    ✖ should work with mock OpenRouter AI client and default factory (4.0193ms)
+  ✖ AI Integration (7.7232ms)
+  ▶ CLI Integration
+    ✔ should parse command line arguments (1.6377ms)
+    ✔ should format scan results (4.7556ms)
+  ✔ CLI Integration (6.58ms)
+  ▶ Error Handling
+    ✔ should handle malformed findings gracefully (0.2989ms)
+    ✔ should handle empty analyzer results (0.082ms)
+    ✔ should handle AI failures gracefully (100.9462ms)
+  ✔ Error Handling (101.6272ms)
+✖ Pipeline Integration (924.3281ms)
+▶ SIH demonstration: end-to-end pipeline scenarios A-F
+  ✔ scenario A: a pristine demo project exits 0 VERIFIED through the real bin (553.4525ms)
+  ✔ scenario B: one flipped dataset byte exits 1 with VG-DATA-001 (155.0798ms)
+  ✔ scenario C: one modified model byte exits 1 with VG-MODEL-001 (190.1476ms)
+  ✔ scenario D: one appended pipeline code line exits 1 with VG-PIPE-001 (182.7994ms)
+  ✔ scenario E: one log-tail rollback behind the live anchor exits 1 with VG-PROV-008 (180.0191ms)
+  ✔ scenario F: one flipped prediction byte exits 1 with VG-OUT-001 (169.6378ms)
+✔ SIH demonstration: end-to-end pipeline scenarios A-F (1434.4169ms)
+▶ OpenAI AI Provider Module
+  ✔ should have standard OpenAI models catalog (1.8509ms)
+  ✔ should create client in mock mode without API key (0.498ms)
+  ✔ should perform mock batch repair for files (0.4082ms)
+  ✔ createAIClient should instantiate OpenAI provider when requested (0.2953ms)
+✔ OpenAI AI Provider Module (4.4991ms)
+▶ OpenRouter AI Module
+  ▶ Model Catalog & Fallback Chain
+    ✔ should have Laguna S 2.1 as default model (0.8871ms)
+    ✔ should have Nemotron 3 Ultra as complex model (0.1528ms)
+    ✔ should include required top-tier and free models in catalog (0.1344ms)
+    ✔ should include new ultra-cheap paid models in catalog (0.1979ms)
+    ✔ should include new free models in catalog (0.1377ms)
+    ✔ should not include dead/retired slugs in catalog (0.0794ms)
+    ✔ should have openrouter/auto as LAST_RESORT_MODEL (0.1504ms)
+    ✔ should configure model fallback chain with 3-tier structure (paid → cheap → free) (0.2307ms)
+    ✔ should have at least 35 models in MODEL_FALLBACK_CHAIN for deep resilience (0.1433ms)
+  ✔ Model Catalog & Fallback Chain (3.3458ms)
+  ▶ Complexity & Model Selection
+    ✔ should calculate simple complexity for empty or small projects (0.5353ms)
+    ✔ should calculate complex level for large polyglot codebases (0.2224ms)
+    ✔ should respect forced model override (0.0985ms)
+  ✔ Complexity & Model Selection (1.0838ms)
+  ▶ OpenRouter Client Mock Mode
+    ✔ should default to mock mode when no API key provided (0.3627ms)
+    ✔ should return valid analysis for SQL injection prompt in mock mode (107.2865ms)
+    ✔ should return valid analysis for code execution vulnerabilities in mock mode (99.948ms)
+    ✔ should return valid analysis for hardcoded secrets in mock mode (115.8944ms)
+    ✔ should analyze batch findings via analyzeFindings() (117.3309ms)
+  ✔ OpenRouter Client Mock Mode (445.2185ms)
+  ▶ Response Parsing and OpenAI Schema
+    ✔ should have system prompt defining required JSON structure (0.6834ms)
+    ✔ should correctly parse markdown-wrapped JSON responses (0.4974ms)
+    ✔ should correctly parse nested JSON objects without truncation (0.2373ms)
+  ✔ Response Parsing and OpenAI Schema (1.9663ms)
+  ▶ AI Code Repair and Model Switching
+    ✔ should generate code repair in mock mode with MiniMax M3 attribution (0.7434ms)
+    ✔ should correctly parse repair response removing markdown fences (0.5514ms)
+    ✔ should execute repairFileBatch in mock mode with MiniMax M3 model attribution (0.6356ms)
+    ✔ should correctly parse batch repair JSON response with array or object format (0.3318ms)
+    ✔ should switch models and notify onModelSwitch when token limits expire in repairFileBatch (0.6849ms)
+    ✔ should configure dedicated FREE_MODEL_FALLBACK_CHAIN with verified zero-cost models (0.2011ms)
+    ✔ should prioritize free models when free tier is requested (0.2464ms)
+  ✔ AI Code Repair and Model Switching (3.6772ms)
+  ▶ PromptGenerator Architecture Awareness
+    ✔ should inject architectural repo summary and impacted files when fileContext is supplied (0.1424ms)
+  ✔ PromptGenerator Architecture Awareness (0.2184ms)
+✔ OpenRouter AI Module (457.0057ms)
+▶ SCA Dependency Audit Engine
+  ✔ compareSemver accurately orders semantic versions (1.4296ms)
+  ✔ isVersionVulnerable checks range constraints (0.3257ms)
+  ✔ parsePackageJson extracts dependencies and line numbers (0.4654ms)
+  ✔ parseRequirementsTxt extracts python dependencies and line numbers (0.3471ms)
+  ✔ audits package.json and flags known vulnerable dependencies offline (867.8144ms)
+  ✔ audits requirements.txt and flags vulnerable Python packages (7.1761ms)
+✔ SCA Dependency Audit Engine (892.0215ms)
+▶ ModelShield - AI / LLM / RAG & Agent Security Analyzer
+  ✔ detects direct prompt injection vulnerability (5.1867ms)
+  ✔ detects unsafe model deserialization via pickle or torch (1.7178ms)
+  ✔ detects AI agent arbitrary code execution tool (2.239ms)
+✔ ModelShield - AI / LLM / RAG & Agent Security Analyzer (13.7139ms)
+▶ AlterationReporter
+  ✔ should initialize with default options (0.9366ms)
+  ✔ should record applied and skipped entries (1.9365ms)
+  ✔ should write report to CODE-ALTERATION-REPORT.md (2.324ms)
+✔ AlterationReporter (6.553ms)
+▶ validateSyntax in fixer.js
+  ✔ should validate valid JavaScript code (0.8067ms)
+  ✔ should reject invalid JavaScript syntax (0.895ms)
+  ✔ should validate valid Python code (157.5981ms)
+  ✔ should reject invalid Python syntax (indentation or syntax error) (138.8042ms)
+✔ validateSyntax in fixer.js (298.764ms)
+▶ Auth Module & Global Configuration
+  ▶ Path Resolution
+    ✔ should return valid ~/.codesentry paths (2.426ms)
+  ✔ Path Resolution (3.3088ms)
+  ▶ readGlobalConfig & saveGlobalConfig
+    ✔ should return empty object for non-existent config file (2.1543ms)
+    ✔ should save config and read it back accurately (11.7628ms)
+    ✔ should merge updates without erasing existing fields (17.9604ms)
+    ✔ should handle corrupted JSON gracefully (2.6657ms)
+    ✔ should enforce 0o600 file permissions on saveGlobalConfig (2.2283ms)
+  ✔ readGlobalConfig & saveGlobalConfig (37.3165ms)
+  ▶ loadGlobalConfig
+    ✔ should populate process.env if not already set (3.0876ms)
+    ✔ should NOT overwrite existing process.env values (2.3892ms)
+  ✔ loadGlobalConfig (5.74ms)
+  ▶ maskApiKey
+    ✔ should mask standard OpenRouter API keys (0.9004ms)
+    ✔ should handle short or missing keys safely (0.6959ms)
+  ✔ maskApiKey (1.7284ms)
+  ▶ ensureAuth
+    ✖ should return isConfigured: true if OPENROUTER_API_KEY is already set (2.0752ms)
+    ✔ should skip without error if noAi: true is passed (0.6583ms)
+    ✖ should skip non-interactively in jsonMode without hanging (0.8048ms)
+  ✖ ensureAuth (3.7401ms)
+✖ Auth Module & Global Configuration (52.8269ms)
+▶ CommandParser
+  ✔ should parse default scan command with no extra flags (0.8369ms)
+  ✔ should parse --no-ai flag (0.1212ms)
+  ✔ should parse --no-report flag (0.1192ms)
+  ✔ should parse --report-file flag (0.2307ms)
+  ✔ should parse --ai-model flag (0.175ms)
+  ✔ should parse model command (0.1485ms)
+  ✔ should parse auth and login commands (0.1397ms)
+  ✔ should display updated help text indicating defaults and auth command (0.2681ms)
+  ✔ should parse --fix and --auto-fix flags (0.171ms)
+  ✔ should parse --yes and -y flags enabling automated repair without manual approval (0.2755ms)
+✔ CommandParser (4.4786ms)
+                            [38;2;113;113;122m● Inspecting codebase...[0m
+▶ CLI Components
+  ▶ Select Component
+    ✔ should normalize string options to objects (1.7266ms)
+    ✔ should normalize mixed object options (0.2254ms)
+    ✔ should render select view with active highlight and card border (1.1083ms)
+    ✔ should fallback gracefully in non-interactive environment (0.4634ms)
+    ✔ should return defaultAction in non-interactive environment for promptActionOnTab (0.2126ms)
+  ✔ Select Component (4.8189ms)
+  ▶ StatusIndicator Component
+    ✔ should format online status indicator with green dot (0.3555ms)
+    ✔ should format warning/loading status indicator (0.1656ms)
+    ✔ should support animated pulsing frames (0.2324ms)
+  ✔ StatusIndicator Component (1.9382ms)
+  ▶ Typewriter Component
+    ✔ should step through text characters and display cursor (0.5306ms)
+    ✔ should reset text cleanly (0.4179ms)
+    ✔ should provide rich programming telemetry messages (0.2198ms)
+  ✔ Typewriter Component (1.4807ms)
+  ▶ ProgressTracker with Typewriter & StatusIndicator
+    ✔ should initialize and transition through states (4.8877ms)
+  ✔ ProgressTracker with Typewriter & StatusIndicator (5.017ms)
+✔ CLI Components (14.0109ms)
+▶ AI Security Enhancer
+  ✔ should extract project context including package.json dependencies (3.409ms)
+  ✔ should query AI model and return structured suggestions in mock mode (2.2027ms)
+  ✔ should format AI suggestion card with model attribution and code (2.3535ms)
+  ✔ should export AI suggestions to markdown file cleanly (31.2873ms)
+✔ AI Security Enhancer (40.4185ms)
+▶ Fixer Engine
+  ▶ generateRuleFix
+    ✔ should generate fix for loose equality (5.7423ms)
+    ✔ should generate fix for off-by-one boundary (1.2549ms)
+    ✔ should generate fix for empty catch block (1.261ms)
+    ✔ should generate fix for hardcoded secret (1.0794ms)
+    ✔ should generate fix for Python assignment in condition (0.9237ms)
+    ✔ should generate fix for assignment in condition with property access (0.7774ms)
+    ✔ should generate fix for Flask debug mode and host binding (0.8008ms)
+    ✔ should generate fix for Bandit B105 hardcoded password in Python (1.0429ms)
+    ✔ should generate fix for Python off-by-one range loop (0.8338ms)
+    ✔ should generate fix for Python f-string SQL injection (1.0077ms)
+    ✔ should generate fix for Python unsafe eval (0.8757ms)
+    ✔ should generate fix for Python unsafe pickle deserialization (1.1384ms)
+    ✔ should simultaneously fix debug=True and host 0.0.0.0 in compound Flask app.run (0.7748ms)
+    ✔ should generate fix for Ruff UP006 deprecated typing generics (0.888ms)
+    ✔ should generate fix for Ruff E722 bare except (0.6401ms)
+    ✔ should generate fix for Ruff B006 mutable default arguments (0.5962ms)
+    ✔ should generate fix for Bandit B113 requests call without timeout (0.5346ms)
+    ✔ should generate fix for Ruff SIM103 return condition directly (0.7135ms)
+  ✔ generateRuleFix (22.6268ms)
+  ▶ formatDiffPreview
+    ✔ should render diff card with file, issue, and +/- changes (1.3734ms)
+  ✔ formatDiffPreview (1.4833ms)
+  ▶ applyFixToFile
+    ✔ should accurately update file content on disk (31.4781ms)
+  ✔ applyFixToFile (31.5762ms)
+  ▶ generateFix with AI Model Cascading
+    ✔ should prioritize deterministic rule fix when available (2.5853ms)
+    ✔ should cascade to AI repairCode when rule fix is unavailable (3.023ms)
+  ✔ generateFix with AI Model Cascading (5.7735ms)
+  ▶ batchFixFile (Holistic File Repair)
+    ✔ should repair multiple deterministic findings in one pass and write once to disk (11.4069ms)
+    ✔ should combine deterministic fixes and send unresolved findings to AI batch repair (199.2201ms)
+    ✔ should notify onModelSwitch when token limits expire during batch repair (28.4821ms)
+    ✔ should return gracefully if file does not exist (1.2674ms)
+  ✔ batchFixFile (Holistic File Repair) (240.7166ms)
+✔ Fixer Engine (302.846ms)
+▶ ReportGenerator
+  ✔ should generate a comprehensive markdown report file (35.8764ms)
+  ✔ should auto-generate filename when filename is not specified (6.5458ms)
+  ✔ should handle scan result with no findings gracefully (5.5907ms)
+✔ ReportGenerator (49.4428ms)
+▶ Aggregation
+  ✔ should return zero counts for empty findings (1.8782ms)
+  ✔ should throw for non-array input (0.5991ms)
+  ✔ should count severities correctly (1.5264ms)
+  ✔ should count categories correctly (0.2974ms)
+  ✔ should count tools correctly (0.2531ms)
+  ✔ should count files correctly (0.2025ms)
+  ✔ should handle the exact distribution: 1 BLOCKER, 2 HIGH, 3 MEDIUM, 4 LOW (0.2628ms)
+✔ Aggregation (6.4634ms)
+▶ AutoGrad Engine - Risk Assessment & Grading
+  ✔ evaluates clean codebase as A+ grade (8.2327ms)
+  ✔ calculates appropriate penalty for Blockers and High severities (1.9706ms)
+  ✔ calculates historical trend between consecutive evaluations (1.919ms)
+  ✔ matches seed learned patterns for offline self-solving (0.3866ms)
+  ✔ dynamically learns new patterns from verified fixes (27.6454ms)
+✔ AutoGrad Engine - Risk Assessment & Grading (42.6697ms)
+▶ Config
+  ✔ should return defaults when no overrides provided (1.9388ms)
+  ✔ should override defaults with provided values (0.2514ms)
+  ✔ should resolve projectPath to absolute (4.1284ms)
+  ✔ should freeze the config object (1.5521ms)
+  ✔ should throw on invalid projectPath (0.8573ms)
+  ✔ should throw on invalid enabledAnalyzers (0.4672ms)
+  ✔ should throw on invalid aiEnabled (0.3347ms)
+  ✔ should throw on invalid severityThreshold (0.4803ms)
+  ✔ should throw on invalid failOn (0.3612ms)
+  ✔ should accept null for failOn (0.3509ms)
+  ✔ should accept all valid severity levels for failOn (0.6048ms)
+✔ Config (13.2372ms)
+▶ DeployGuard - Pre-Deployment Readiness & Infrastructure Gate
+  ✔ evaluates clean deployment as PASSED with 100% readiness (0.9407ms)
+  ✔ evaluates blockers as BLOCKED gate status (0.308ms)
+  ✔ evaluates high severity issues as WARNING gate status (0.2001ms)
+  ✔ flags committed .env files as blockers (1.9293ms)
+✔ DeployGuard - Pre-Deployment Readiness & Infrastructure Gate (4.8268ms)
+▶ RepoMap Architectural Context & Component Extractor
+  ✔ extractComponents detects routes, sinks, and exports in JS (1.5215ms)
+  ✔ extractComponents detects AI sinks and python functions (0.2527ms)
+  ✔ builds repo map with mtime caching (3.2183ms)
+✔ RepoMap Architectural Context & Component Extractor (8.7757ms)
+▶ SoftwareRiskGraph & AttackGraph Engine
+  ✔ builds graph and traces attack chain from HTTP route to database sink (4.2453ms)
+  ✔ returns clean graph when no exploitable paths exist (0.192ms)
+  ✔ computes breaking change impact via getImpactedFiles (6.0615ms)
+✔ SoftwareRiskGraph & AttackGraph Engine (14.8625ms)
+▶ AutoSandbox - Critical Change Isolation & Safety Guard
+  ✔ detects critical severity and security category findings (1.131ms)
+  ✔ detects dangerous runtime primitives as critical (0.2578ms)
+  ✔ safely executes critical changes through sandbox with backup (7.5869ms)
+  ✔ intercepts and blocks broken critical changes in sandbox without touching disk (5.1174ms)
+✔ AutoSandbox - Critical Change Isolation & Safety Guard (17.5105ms)
+▶ Scan
+  ✔ should return a complete ScanResult for a real project (696.6645ms)
+  ✔ should discover and analyze real files (687.4315ms)
+  ✔ should produce findings from buggy code (1137.2524ms)
+  ✔ should have valid findings in the result (1115.9914ms)
+  ✔ should have aggregation that matches findings (1115.229ms)
+  ✔ should have score between 0 and 100 (677.0933ms)
+  ✔ should have a valid verdict status (657.7798ms)
+  ✔ should have metadata with duration and timestamp (112.5093ms)
+  ✔ should deduplicate findings across tools (1090.6706ms)
+  ✔ should handle custom config overrides (117.6336ms)
+  ✔ should set filesAnalyzed from discovery (130.3973ms)
+  ✔ should produce fewer findings for clean project than broken project (1214.7706ms)
+  ✔ should handle empty/minimal project (114.302ms)
+✔ Scan (8870.8998ms)
+▶ Discovery Module
+  ▶ Language
+    ✔ should detect all supported JavaScript extensions (0.6508ms)
+    ✔ should detect all supported TypeScript extensions (0.1197ms)
+    ✔ should detect Python extensions (0.1029ms)
+    ✔ should return supported extensions list (0.1536ms)
+    ✔ should have correct supported languages (0.0844ms)
+  ✔ Language (1.8986ms)
+  ▶ Files
+    ✔ should enumerate files from clean-project (0.74ms)
+    ✔ should enumerate files from broken-js (0.5634ms)
+    ✔ should enumerate files from broken-python (0.4676ms)
+    ✔ should skip default ignore directories (0.1755ms)
+    ✔ should handle maxDepth option (3.8442ms)
+  ✔ Files (6.1743ms)
+  ▶ Ignore
+    ✔ should have default ignore patterns (0.2812ms)
+    ✔ should load ignore patterns from project (0.4304ms)
+    ✔ should match directory names (0.2787ms)
+    ✔ should match exact directory names in path (0.1332ms)
+  ✔ Ignore (1.3167ms)
+  ▶ Discover
+    ✔ should discover clean-project (0.7732ms)
+    ✔ should discover broken-js (0.4097ms)
+    ✔ should discover broken-python (0.5355ms)
+    ✔ should discover mixed-project (0.559ms)
+    ✔ should discover all fixture categories (5.0503ms)
+    ✔ should return relative paths in files array (0.8666ms)
+  ✔ Discover (8.5014ms)
+✔ Discovery Module (18.4432ms)
+▶ Deduplication
+  ▶ deduplicate
+    ✔ should return empty array for empty input (1.5326ms)
+    ✔ should return empty array for null input (0.1306ms)
+    ✔ should return same findings if no duplicates (0.7065ms)
+    ✔ should remove duplicate findings with same fingerprint (0.2233ms)
+    ✔ should keep highest severity when deduplicating (0.2396ms)
+    ✔ should keep BLOCKER over everything (0.1787ms)
+    ✔ should preserve all unique findings across categories (0.2765ms)
+    ✔ should handle large groups correctly (0.1931ms)
+  ✔ deduplicate (4.4721ms)
+  ▶ keepHighestSeverity
+    ✔ should return the finding with highest severity (0.2697ms)
+    ✔ should return first finding if all same severity (0.2563ms)
+  ✔ keepHighestSeverity (1.6053ms)
+  ▶ getDuplicateGroups
+    ✔ should return empty array when no duplicates (0.3822ms)
+    ✔ should return groups of duplicates (0.1332ms)
+  ✔ getDuplicateGroups (0.6046ms)
+✔ Deduplication (7.3823ms)
+▶ Normalization
+  ▶ normalizeEslint
+    ✔ should convert ESLint results to findings (1.3772ms)
+    ✔ should map error severity to BLOCKER (0.1756ms)
+    ✔ should map warning severity to HIGH (0.1374ms)
+    ✔ should skip severity 0 (off) (0.1531ms)
+    ✔ should return empty array for non-array input (0.6222ms)
+  ✔ normalizeEslint (3.2851ms)
+  ▶ normalizeBandit
+    ✔ should convert Bandit results to findings (0.533ms)
+    ✔ should map medium severity correctly (0.2978ms)
+    ✔ should return empty array for non-array input (0.2259ms)
+  ✔ normalizeBandit (2.1832ms)
+  ▶ normalizeSemgrep
+    ✔ should convert Semgrep results to findings (0.3236ms)
+    ✔ should return empty array for non-array input (0.2044ms)
+  ✔ normalizeSemgrep (0.6868ms)
+  ▶ normalizeRuff
+    ✔ should convert Ruff results to findings (0.293ms)
+    ✔ should map S-prefixed rules to security category (0.1371ms)
+  ✔ normalizeRuff (0.5275ms)
+  ▶ normalizeTypescript
+    ✔ should convert TypeScript diagnostics to findings (0.1806ms)
+  ✔ normalizeTypescript (0.2328ms)
+  ▶ normalize (dispatcher)
+    ✔ should dispatch to the correct normalizer (0.1616ms)
+    ✔ should throw for unknown tool (0.3492ms)
+    ✔ should throw with tool name in error message (0.0833ms)
+  ✔ normalize (dispatcher) (0.6845ms)
+  ▶ registerNormalizer
+    ✔ should register a custom normalizer (0.1418ms)
+    ✔ should throw if normalizer is not a function (0.078ms)
+  ✔ registerNormalizer (0.2761ms)
+  ▶ failure handling
+    ✔ should handle malformed ESLint results gracefully (0.1456ms)
+    ✔ should handle empty results from any tool (0.1455ms)
+  ✔ failure handling (0.3783ms)
+✔ Normalization (9.4937ms)
+▶ Finding Schema
+  ▶ createFinding
+    ✔ should create a valid finding with required fields (1.8811ms)
+    ✔ should create a finding with all optional fields (0.2637ms)
+    ✔ should generate deterministic ids for same input (0.1671ms)
+    ✔ should generate different ids for different input (0.2581ms)
+    ✔ should generate fingerprints based on file, line, category (0.1873ms)
+    ✔ should generate different fingerprints for different categories (0.9156ms)
+    ✔ should coerce line and column to numbers (0.2061ms)
+    ✔ should throw on missing tool (0.4264ms)
+    ✔ should throw on invalid tool (0.3033ms)
+    ✔ should throw on missing category (0.3075ms)
+    ✔ should throw on invalid category (0.1397ms)
+    ✔ should throw on missing file (0.1213ms)
+    ✔ should throw on missing message (0.1373ms)
+    ✔ should throw on invalid severity (0.2827ms)
+    ✔ should accept all valid severities (0.1718ms)
+    ✔ should accept all valid categories (0.1783ms)
+    ✔ should accept all valid tools (0.1643ms)
+  ✔ createFinding (7.5351ms)
+  ▶ isValidFinding
+    ✔ should return true for valid finding (0.137ms)
+    ✔ should return false for null (0.0892ms)
+    ✔ should return false for non-object (0.0756ms)
+    ✔ should return false for missing required fields (0.081ms)
+  ✔ isValidFinding (0.5705ms)
+  ▶ generateId
+    ✔ should produce consistent output (0.1756ms)
+    ✔ should produce 16-char hex string (0.2909ms)
+  ✔ generateId (0.5835ms)
+  ▶ generateFingerprint
+    ✔ should produce consistent output (0.1413ms)
+    ✔ should differ when category changes (0.115ms)
+  ✔ generateFingerprint (0.372ms)
+✔ Finding Schema (9.7291ms)
+▶ runAssurance happy path
+  ✔ should report VERIFIED with all six dimensions PASS on an untampered demo (130.6098ms)
+  ✔ should build a provenance graph with artifacts, contributors, trusts and derivations (142.169ms)
+✔ runAssurance happy path (273.5442ms)
+▶ runAssurance tamper detection
+  ✔ should fail the dataset dimension on a modified dataset file (163.4768ms)
+  ✔ should fail the model dimension on a modified model file (189.4185ms)
+  ✔ should fail the model dimension when the model file is missing (172.5387ms)
+  ✔ should fail the pipeline dimension when pipeline code is modified (169.8212ms)
+  ✔ should fail the output dimension while inference stays PASS (171.1048ms)
+  ✔ should fail the inference dimension on a modified input while output stays PASS (156.455ms)
+  ✔ should fail the dataset dimension when registered dataset files are missing (126.8ms)
+✔ runAssurance tamper detection (1150.4365ms)
+▶ runAssurance anchor and store handling
+  ✔ should report UNANCHORED and INCOMPLETE when the anchor file is deleted (148.7247ms)
+  ✔ should fail provenance with VG-PROV-008 when the anchor head is wrong (168.3761ms)
+  ✔ should force VG-PROV-001 and FAIL provenance on an unreadable store.json (226.0119ms)
+  ✔ should return INCOMPLETE with every dimension NOT_CHECKED when no store exists (4.5812ms)
+✔ runAssurance anchor and store handling (548.1583ms)
+▶ runAssurance request validation
+  ✔ should reject a request for an unregistered dataset (112.8008ms)
+  ✔ should reject a request for an unregistered model (73.7301ms)
+  ✔ should reject an explicit inference record that is not in the log (189.3586ms)
+✔ runAssurance request validation (376.1982ms)
+▶ reportToFindings
+  ✔ should produce no findings for a clean VERIFIED report (190.4016ms)
+  ✔ should map report findings to valid visionguard CodeSentry findings (194.4358ms)
+  ✔ should downgrade WARN severities to INFO and fill fallback file paths (0.3848ms)
+  ✔ should tolerate malformed report shapes (0.2164ms)
+✔ reportToFindings (385.7648ms)
+▶ VisionGuard canonical JSON
+  ✔ should serialize an empty object as {} (1.5064ms)
+  ✔ should sort object keys (0.3407ms)
+  ✔ should sort keys recursively (0.2684ms)
+  ✔ should serialize negative zero as 0 (0.2199ms)
+  ✔ should preserve string content via JSON escaping (0.195ms)
+  ✔ should support empty arrays and null (0.3216ms)
+  ✔ should reject non-finite numbers (0.9938ms)
+  ✔ should reject floats in hashed positions (0.335ms)
+  ✔ should accept safe integers (0.3198ms)
+  ✔ should reject unsafe integers (0.3649ms)
+  ✔ should reject undefined values (0.2053ms)
+  ✔ should reject functions, symbols and class instances (0.3119ms)
+  ✔ should reject sparse arrays (0.2221ms)
+  ✔ should reject forbidden and prototype keys (0.1992ms)
+  ✔ should reject lone surrogates (0.2941ms)
+  ✔ should accept well formed surrogate pairs (0.1356ms)
+  ✔ should reject nesting beyond the depth limit (0.3748ms)
+  ✔ should reject objects that are not plain (0.1649ms)
+✔ VisionGuard canonical JSON (9.8051ms)
+▶ VisionGuard parseCanonical
+  ✔ should parse and accept canonical input (1.1935ms)
+  ✔ should reject invalid JSON (0.3398ms)
+  ✔ should reject non-canonical values inside valid JSON (0.193ms)
+  ✔ should reject input larger than the byte limit (0.1664ms)
+  ✔ should reject input deeper than the depth limit (0.1936ms)
+  ✔ should count bytes in utf8 (0.223ms)
+✔ VisionGuard parseCanonical (2.5828ms)
+▶ VisionGuard hashRecord
+  ✔ should produce a sha256 prefixed hex digest (1.028ms)
+  ✔ should be independent of key order (0.1825ms)
+  ✔ should be deterministic (0.1799ms)
+  ✔ should ignore record_hash and signature fields (0.2177ms)
+  ✔ should ignore record_id so record_id can equal record_hash (0.1851ms)
+  ✔ should still cover the value of a nested record_id field (0.1756ms)
+  ✔ should change when content changes (0.1429ms)
+  ✔ should hash the empty object to sha256 of {} (0.0822ms)
+  ✔ should reject non-object records (0.1749ms)
+  ✔ should reject records with non-canonical content (0.189ms)
+✔ VisionGuard hashRecord (2.8975ms)
+▶ VisionGuard canonicalDigest
+  ✔ should return raw hex without prefix (0.2039ms)
+✔ VisionGuard canonicalDigest (0.3113ms)
+▶ vision commands parser seam
+  ✔ should route vision arguments verbatim without parsing them as scan options (1.9426ms)
+  ✔ should handle a bare vision token (0.3357ms)
+  ✔ should keep scan parsing unchanged (0.2805ms)
+  ✔ should mention vision in the top-level help (0.3729ms)
+✔ vision commands parser seam (4.0824ms)
+▶ parseVisionArgs
+  ✔ should collect flags anywhere and positionals after the subcommand (0.2686ms)
+  ✔ should consume the next token as a flag value (0.1771ms)
+  ✔ should reject unknown options and missing values (1.0078ms)
+✔ parseVisionArgs (1.8168ms)
+▶ vision usage errors
+  ✔ should exit 2 for a missing subcommand (0.7912ms)
+  ✔ should exit 2 for an unknown subcommand (0.4302ms)
+  ✔ should exit 2 for an unknown flag (0.3769ms)
+  ✔ should exit 2 for a missing flag value (0.1991ms)
+  ✔ should exit 2 for too many positionals (0.2215ms)
+  ✔ should exit 2 for a flag that is invalid for the subcommand (0.242ms)
+  ✔ should print usage and exit 0 for --help and -h (0.2331ms)
+  ✔ should keep usage errors on stderr even with --json (0.2094ms)
+  ✔ should export a usage text with every subcommand (0.1398ms)
+✔ vision usage errors (3.5157ms)
+▶ vision init
+  ✔ should initialize a store with an imported key and return OK (18.9011ms)
+  ✔ should honour --store for a custom store directory (17.1772ms)
+  ✔ should exit 2 when non-interactive without --actor (4.8693ms)
+  ✔ should exit 2 when non-interactive without --key-file (0.6321ms)
+  ✔ should exit 2 when the key file does not exist (0.6372ms)
+  ✔ should exit 4 when the key file is not a valid PKCS#8 key (1.9522ms)
+  ✔ should exit 2 for an invalid contributor label (1.8189ms)
+✔ vision init (47.207ms)
+▶ vision register-data and verify-data
+  ✔ should register a dataset and sign its binding (43.2933ms)
+  ✔ should exit 2 when the dataset directory does not exist (17.2237ms)
+  ✔ should exit 2 when no contributor is registered and --actor is absent (1.3437ms)
+  ✔ should exit 2 when the contributor has a registered public key but no discoverable private key (22.812ms)
+  ✔ should verify a registered dataset as VERIFIED (76.5732ms)
+  ✔ should exit 1 when dataset files were tampered after registration (55.0599ms)
+  ✔ should exit 3 for an unregistered dataset name (22.7642ms)
+  ✔ should exit 3 on a storeless project (1.248ms)
+✔ vision register-data and verify-data (240.9585ms)
+▶ vision register-model and verify-model
+  ✔ should sniff and register a model without --format (25.4781ms)
+  ✔ should register with an explicit matching --format (31.1991ms)
+  ✔ should exit 2 when the declared format contradicts the file magic (21.935ms)
+  ✔ should exit 2 for an unsupported --format value (20.3919ms)
+  ✔ should exit 2 when the model file is missing (15.9365ms)
+  ✔ should exit 2 when the file is empty and cannot be sniffed (28.6143ms)
+  ✔ should verify a registered model by id (40.7435ms)
+  ✔ should verify a registered model by intact file path (32.1174ms)
+  ✔ should exit 1 when the model bytes were tampered (by id) (36.3585ms)
+  ✔ should exit 1 when the tampered model is passed as a basename-matching file argument (41.8996ms)
+  ✔ should exit 3 for an unregistered model id (16.1975ms)
+  ✔ should exit 3 on a storeless project (0.9448ms)
+✔ vision register-model and verify-model (312.7203ms)
+▶ vision record-pipeline, record-inference and verify-output
+  ✔ should record a signed pipeline identity (33.0587ms)
+  ✔ should exit 2 when --name or --version is missing (13.555ms)
+  ✔ should exit 2 when the --code file does not exist (30.9379ms)
+  ✔ should record a signed inference run with resolved model and pipeline refs (50.9419ms)
+  ✔ should exit 2 when record-inference is missing flags or positionals (30.4548ms)
+  ✔ should exit 3 when the referenced model is not registered (24.3058ms)
+  ✔ should verify a recorded output artifact (152.5584ms)
+  ✔ should exit 3 when no inference record matches the output (70.1069ms)
+  ✔ should exit 1 when the output bytes were tampered (184.496ms)
+✔ vision record-pipeline, record-inference and verify-output (590.9817ms)
+▶ vision verify
+  ✔ should report VERIFIED with all six dimensions and the exact payload key order (299.1463ms)
+  ✔ should render the human assurance table (204.1826ms)
+  ✔ should exit 1 when a registered artifact was tampered (207.7195ms)
+  ✔ should exit 3 with all dimensions NOT_CHECKED on a storeless project (1.3127ms)
+  ✔ should exit 1 on a storeless project with --require-verified (1.0182ms)
+  ✔ should exit 2 when both --expected-head and --anchor-file are supplied (88.8314ms)
+  ✔ should exit 1 when the expected head does not match (246.3784ms)
+  ✔ should exit 0 when the expected head matches the committed anchor (180.8439ms)
+  ✔ should exit 2 when the anchor file does not exist (73.7063ms)
+✔ vision verify (1303.9142ms)
+▶ vision provenance
+  ✔ should summarise the provenance log by default (87.7579ms)
+  ✔ should render the human provenance summary (101.3737ms)
+  ✔ should verify the chain as PASS when the store is anchored (196.9922ms)
+  ✔ should exit 3 with UNANCHORED when no anchor is available (34.9142ms)
+  ✔ should resolve lineage for a registered artifact (184.8492ms)
+  ✔ should exit 3 when no record references the artifact (84.9949ms)
+  ✔ should expose the provenance graph with --graph (378.2312ms)
+  ✔ should render graph lines in human mode (249.1826ms)
+  ✔ should combine --verify and a missing artifact with a failing exit (201.5846ms)
+  ✔ should include the record list with --verbose (93.6638ms)
+✔ vision provenance (1614.4742ms)
+▶ vision json error payloads
+  ✔ should shape VgError failures as a payload on stdout (3.5473ms)
+  ✔ should report unexpected failures as ERROR with exit 4 (4.5525ms)
+  ✔ should keep human-mode failures on stderr without a payload (1.2703ms)
+  ✔ should honour flags placed before the subcommand (221.2734ms)
+✔ vision json error payloads (231.0918ms)
+▶ VisionGuard CV pipeline demo
+  ✔ should verify every dimension and re-execute identically on the happy path (2.3448ms)
+  ✔ should register four contributors with least-privilege operations and separate key stores (3.1924ms)
+  ✔ should append a signed hash-linked chain of nine records in dependency order (1.1794ms)
+  ✔ should produce byte-identical artifacts across independent runs (0.2774ms)
+  ✔ should reject operations the signing contributor is not authorized for (6.5784ms)
+  ✔ should refuse to reuse a directory that already contains a provenance log (0.6346ms)
+  ✔ should generate deterministic dataset bytes (125.9071ms)
+  ✔ should detect exactly one modified dataset file (43.7349ms)
+  ✔ should detect a modified model file (4.6123ms)
+  ✔ should detect a tampered prediction output with expected and actual hashes differing (9.1799ms)
+  ✔ should detect a modified inference input (14.5503ms)
+✔ VisionGuard CV pipeline demo (214.4247ms)
+▶ VisionGuard demo codecs
+  ✔ should roundtrip grayscale PNGs and reject corrupted chunks (0.9696ms)
+  ✔ should roundtrip safetensors tensors and satisfy the magic-byte sniffer (0.4993ms)
+✔ VisionGuard demo codecs (1.7511ms)
+▶ VisionGuard demo CLI
+  ✔ should run from the command line with stable exit codes (1792.7457ms)
+✔ VisionGuard demo CLI (1792.9521ms)
+▶ VisionGuard errors
+  ✔ should freeze the error code registry (1.2678ms)
+  ✔ should create well formed errors (1.2712ms)
+  ✔ should fall back to VG_INTERNAL for unknown codes (0.1935ms)
+  ✔ should sanitize invalid details (1.2742ms)
+  ✔ should serialize to JSON with code and details (0.3316ms)
+  ✔ should identify VgErrors only (0.2127ms)
+  ✔ should pass through existing VgErrors in toVgError (0.2258ms)
+  ✔ should wrap foreign errors (0.2762ms)
+✔ VisionGuard errors (6.9247ms)
+▶ VisionGuard hashBytes
+  ✔ should match the NIST empty string vector (4.273ms)
+  ✔ should match the NIST abc vector (0.2394ms)
+  ✔ should hash buffers and strings identically (0.1798ms)
+  ✔ should hash utf8 content by bytes (0.186ms)
+✔ VisionGuard hashBytes (7.1859ms)
+▶ VisionGuard hashFile
+  ✔ should hash empty, single byte and chunk boundary sizes (67.5494ms)
+  ✔ should produce identical digests for any chunk size option (26.9747ms)
+  ✔ should reject files above the size limit before reading (4.3926ms)
+  ✔ should report unreadable missing files (0.4863ms)
+  ✔ should reject directories (1.0883ms)
+  ﹣ should reject symbolic links when the platform allows creating them (3.1954ms) # symlink creation unavailable: EPERM
+  ﹣ should reject unreadable files when permissions deny access (0.1841ms) # read permissions are not enforced for the owner on Windows
+  ✔ should hash a 2 GiB sparse file with bounded memory (4849.0645ms)
+✔ VisionGuard hashFile (4953.8217ms)
+▶ VisionGuard assertStableStats
+  ✔ should accept identical stats (0.3494ms)
+  ✔ should detect size changes (0.401ms)
+  ✔ should detect mtime changes (0.2029ms)
+  ✔ should detect inode replacement (0.205ms)
+  ✔ should detect device changes (0.2232ms)
+✔ VisionGuard assertStableStats (2.0352ms)
+▶ VisionGuard merkleRoot
+  ✔ should hash an empty dataset with its domain tag (1.5327ms)
+  ✔ should not confuse an empty dataset with a single leaf dataset (1.0223ms)
+  ✔ should be independent of entry order (1.6455ms)
+  ✔ should bind to path, size and content hash (0.8116ms)
+  ✔ should separate datasets of different shapes (0.7892ms)
+  ✔ should reject duplicate paths (0.6744ms)
+  ✔ should reject malformed entries (2.2432ms)
+  ✔ should sort unicode paths by code unit order (0.4749ms)
+✔ VisionGuard merkleRoot (10.1148ms)
+▶ VisionGuard inference recording
+  ✔ should record an inference with the documented shape (92.0312ms)
+  ✔ should record the opt-in canonical_json output mode (62.6188ms)
+  ✔ should reject an unsupported output mode and deep params (127.606ms)
+  ✔ should refuse an unauthorized key for the infer operation (117.6677ms)
+  ✔ should refuse a missing or mismatched key file (75.4468ms)
+✔ VisionGuard inference recording (477.9593ms)
+▶ VisionGuard inference verification
+  ✔ should PASS a valid inference and keep the provenance chain anchored (224.8739ms)
+  ✔ should skip file checks when no root is supplied (130.1108ms)
+  ✔ should detect a modified input file (106.227ms)
+  ✔ should detect a missing input file (76.9967ms)
+  ✔ should detect a modified model file (142.6534ms)
+  ✔ should detect a recorded model hash that contradicts the registration (76.1159ms)
+  ✔ should detect an unregistered model reference (88.9879ms)
+  ✔ should detect a stale model version after a newer registration (129.216ms)
+  ✔ should detect a modified output file (87.8898ms)
+  ✔ should detect a missing output file (220.6763ms)
+  ✔ should detect a malformed output target (145.8249ms)
+  ✔ should detect outputs swapped between two records (179.2571ms)
+  ✔ should detect a missing parent reference (208.7385ms)
+  ✔ should detect an unregistered pipeline reference (79.8922ms)
+  ✔ should detect a pipeline hash that contradicts the registration (127.665ms)
+  ✔ should report a missing record as an invalid inference record (149.65ms)
+  ✔ should report NOT_CHECKED when nothing was ever recorded (11.8576ms)
+  ✔ should not find a record whose metadata was altered after signing (79.6549ms)
+✔ VisionGuard inference verification (2268.3334ms)
+▶ VisionGuard provenance cross checks for inference refs
+  ✔ should flag model and pipeline ref mismatches at log level (120.0686ms)
+  ✔ should verify a fully consistent chain against its anchor (99.9882ms)
+✔ VisionGuard provenance cross checks for inference refs (220.4114ms)
+▶ VisionGuard version comparison
+  ✔ should order versions numerically per segment (0.3345ms)
+✔ VisionGuard version comparison (0.4669ms)
+▶ commands seam
+  ✔ should parse --vision and --require-verified for scan (2.3384ms)
+  ✔ should leave vision options unset by default (0.2945ms)
+  ✔ should reject unknown flags as before (0.3944ms)
+  ✔ should document both flags and an example in help (0.3854ms)
+✔ commands seam (4.9132ms)
+▶ finding schema seam
+  ✔ should accept visionguard as a finding tool (0.7545ms)
+  ✔ should still reject unknown tools (0.7882ms)
+✔ finding schema seam (1.8947ms)
+▶ applyVisionGuardToScan
+  ✔ should attach a VERIFIED report without touching score or verdict (394.6952ms)
+  ✔ should force FAIL, exit 1 and merge findings on an integrity violation (446.8583ms)
+  ✔ should not double count a visionguard finding already present (391.7474ms)
+  ✔ should return exit 0 for INCOMPLETE unless requireVerified is set (6.2827ms)
+  ✔ should inject provenance nodes and edges into an existing risk graph (306.326ms)
+  ✔ should tolerate a result without a risk graph (393.5182ms)
+✔ applyVisionGuardToScan (1940.5466ms)
+▶ scan pipeline integration
+  ✔ should verify a signed store end to end and leave core signals untouched (217.4548ms)
+  ✔ should expose injected graph nodes through the scan risk graph summary (0.5512ms)
+  ✔ should render the VisionGuard section in the markdown report (61.9919ms)
+  ✔ should render the VisionGuard line in the terminal summary (2.9968ms)
+✔ scan pipeline integration (691.4623ms)
+▶ report and formatter guards
+  ✔ should omit the VisionGuard section when the scan had no assurance run (3.1145ms)
+  ✔ should surface a forced integrity violation in report and terminal output (325.3763ms)
+✔ report and formatter guards (328.7853ms)
+▶ vision guard facade
+  ✔ should support the documented lifecycle on a fresh store (98.8629ms)
+  ✔ should verify the demo store and walk lineage through the facade (447.1938ms)
+✔ vision guard facade (546.3727ms)
+▶ assurance report cross-check
+  ✔ should keep runAssurance and the adapter report consistent (512.0978ms)
+✔ assurance report cross-check (512.6831ms)
+▶ VisionGuard key generation
+  ✔ should generate an ed25519 pair with a 32 hex key id (9.2401ms)
+  ✔ should derive distinct key ids for distinct keys (1.294ms)
+  ✔ should expose the documented default key directory (0.4692ms)
+✔ VisionGuard key generation (12.998ms)
+▶ VisionGuard private key files
+  ✔ should save and reload a private key that still signs (14.5687ms)
+  ✔ should refuse to overwrite an existing private key (7.6208ms)
+  ✔ should reject a garbage private key file (10.4137ms)
+  ✔ should reject a non-ed25519 private key (169.8842ms)
+  ✔ should reject unsafe contributors and key ids in paths (1.0656ms)
+✔ VisionGuard private key files (204.4012ms)
+▶ VisionGuard signatures
+  ✔ should verify a signature over the record hash string (1.8969ms)
+  ✔ should reject a signature made by another key (2.5976ms)
+  ✔ should reject malformed signatures without throwing (5.0468ms)
+✔ VisionGuard signatures (10.0322ms)
+▶ VisionGuard public key records
+  ✔ should build a self signed record that round trips (26.5048ms)
+  ✔ should recompute key_id from the DER so a substituted key cannot keep it (1.9668ms)
+  ✔ should detect a tampered key record by hash and by signature (2.0584ms)
+  ✔ should require an unsigned record to be revoked (1.3387ms)
+  ✔ should reject unsupported fields, operations and statuses (2.7765ms)
+  ✔ should reject an active record signed with the wrong key (1.6529ms)
+  ✔ should build store paths only from validated inputs (2.3418ms)
+✔ VisionGuard public key records (39.5121ms)
+▶ VisionGuard limits
+  ✔ should expose frozen defaults (1.8332ms)
+  ✔ should return defaults when no overrides are given (3.093ms)
+  ✔ should merge overrides over defaults (0.3563ms)
+  ✔ should reject unknown or invalid overrides (2.1408ms)
+  ✔ should enforce file count limits (0.7373ms)
+  ✔ should enforce directory count limits (0.6156ms)
+  ✔ should enforce file size limits (0.5539ms)
+  ✔ should carry the display path in size violations (0.3565ms)
+  ✔ should enforce total byte limits (0.5156ms)
+  ✔ should enforce depth limits (0.5588ms)
+  ✔ should enforce metadata byte limits (0.418ms)
+✔ VisionGuard limits (14.3181ms)
+▶ VisionGuard dataset registration and verification
+  ✔ should register a valid dataset and verify it as clean but unanchored (55.8141ms)
+  ✔ should detect modified file content (15.1293ms)
+  ✔ should detect corruption that does not change the file size (9.4811ms)
+  ✔ should detect deleted files (13.7432ms)
+  ✔ should detect added files (24.9204ms)
+  ✔ should detect renames via identical content at a new path (16.0477ms)
+  ✔ should register an empty dataset with the empty-domain merkle root (8.7055ms)
+  ✔ should allow duplicate content at distinct paths (12.4702ms)
+  ✔ should exclude unsupported extensions by policy and stay consistent (12.9679ms)
+  ﹣ should record symlink exclusion and escalate it only in strict verify (7.5458ms) # symlink creation unavailable: EPERM
+  ﹣ should fail registration when a file is unreadable (0.2499ms) # read permissions are not enforced for the owner on Windows
+  ﹣ should report unreadable files during verification (0.2069ms) # read permissions are not enforced for the owner on Windows
+  ✔ should enforce large file limits at registration (5.7314ms)
+  ﹣ should reject a case collision on case sensitive filesystems (6.3142ms) # filesystem is case insensitive and merged the two names
+  ✔ should reject an NFC collision on filesystems that allow both spellings (8.6343ms)
+  ✔ should reject duplicate canonical paths in a manifest (12.1883ms)
+✔ VisionGuard dataset registration and verification (213.4ms)
+▶ VisionGuard manifest tampering detection
+  ✔ should fail when the manifest body is tampered without updating record_hash (13.8046ms)
+  ✔ should fail when file list and record_hash agree but the merkle root does not (8.3717ms)
+  ✔ should fail when counts are tampered (6.2396ms)
+  ✔ should reject malformed JSON (0.7481ms)
+  ✔ should reject unsupported schema versions (0.768ms)
+  ✔ should reject structural violations (1.3626ms)
+  ✔ should reject non canonical file paths in manifests (0.4071ms)
+  ✔ should reject unknown fields only in strict mode (0.2931ms)
+  ✔ should round trip through parseCanonical (6.5484ms)
+✔ VisionGuard manifest tampering detection (39.3544ms)
+▶ VisionGuard diffDataset
+  ✔ should pair one rename and keep unmatched files as removed (0.5038ms)
+  ✔ should not pair renames across different hashes (0.2891ms)
+  ✔ should pass unreadable entries through (0.2141ms)
+  ✔ should not report unreadable files as removed (0.3679ms)
+✔ VisionGuard diffDataset (1.6468ms)
+▶ VisionGuard model format sniffing
+  ✔ should detect a valid safetensors header (1.8946ms)
+  ✔ should reject a safetensors header that extends past end of file (0.3355ms)
+  ✔ should reject a safetensors header that is not valid JSON (0.3124ms)
+  ✔ should accept a huge safetensors header by plausibility without parsing it (0.2816ms)
+  ✔ should report an empty file (0.2104ms)
+  ✔ should detect an onnx file by its protobuf header byte (0.2683ms)
+  ✔ should detect a zip-based torch archive (0.2776ms)
+  ✔ should detect a pickle-based torch file (0.3214ms)
+  ✔ should fail magic for a .pt file carrying PNG bytes (0.2674ms)
+  ✔ should classify unknown bytes as the "other" format (0.3167ms)
+✔ VisionGuard model format sniffing (6.6289ms)
+▶ VisionGuard model registration
+  ✔ should register a valid safetensors file (19.495ms)
+  ✔ should reject an unsupported declared format (11.2983ms)
+  ✔ should reject a declared format that does not match the file family (6.7588ms)
+  ✔ should reject a .pt file without a zip or pickle signature (14.9404ms)
+  ✔ should reject an empty model file (2.6219ms)
+  ✔ should reject a missing model file (1.2551ms)
+  ✔ should reject an id that is not a safe label (2.4782ms)
+  ﹣ should refuse to register a model reached through a symbolic link (3.2416ms) # symlink creation unavailable: EPERM
+  ✔ should reject metadata that nests deeper than the limit (20.1185ms)
+  ✔ should reject metadata larger than the byte limit (3.6737ms)
+  ✔ should reject metadata values that cannot be canonicalized (2.7346ms)
+✔ VisionGuard model registration (89.4641ms)
+▶ VisionGuard model verification
+  ✔ should verify an untouched model as PASS (5.7366ms)
+  ✔ should FAIL a model modified in place (7.0845ms)
+  ✔ should FAIL a same-size replacement file (5.8939ms)
+  ✔ should FAIL a truncated model with a magic mismatch (5.979ms)
+  ✔ should FAIL an emptied model with only the empty finding (17.8408ms)
+  ✔ should FAIL a deleted model file (5.1716ms)
+  ✔ should FAIL a tampered model manifest (19.4009ms)
+  ✔ should report a pickle-based model without failing it (canary stays untouched) (7.7011ms)
+  ✔ should FAIL a model whose magic bytes no longer match (5.9413ms)
+  ✔ should verify an "other" format file as PASS (5.0322ms)
+✔ VisionGuard model verification (86.6876ms)
+▶ VisionGuard model manifest validation
+  ✔ should export the documented formats and finding severities (0.373ms)
+  ✔ should reject unknown fields in strict mode (4.1508ms)
+  ✔ should reject an unsupported schema major version (4.3072ms)
+  ✔ should reject a kind mismatch (3.7274ms)
+  ✔ should reject format and detected_format from different families (3.4542ms)
+  ✔ should reject a non-positive size (3.4707ms)
+  ✔ should reject a malformed record_hash (4.8319ms)
+✔ VisionGuard model manifest validation (24.8085ms)
+▶ VisionGuard normalizeRelPath
+  ✔ should accept plain relative paths (1.9369ms)
+  ✔ should unify windows and posix separators (0.3659ms)
+  ✔ should strip leading dot segments (0.2577ms)
+  ✔ should normalize to NFC (0.4564ms)
+  ✔ should reject empty and non string input (1.1394ms)
+  ✔ should reject traversal segments (0.4756ms)
+  ✔ should reject absolute paths (0.4249ms)
+  ✔ should reject NUL bytes (0.3102ms)
+  ✔ should reject control characters (0.3555ms)
+  ✔ should reject bidirectional override characters (0.4258ms)
+  ✔ should reject lone surrogates (0.2671ms)
+  ✔ should reject empty and repeated separators (0.3515ms)
+  ✔ should reject components longer than the limit (0.4576ms)
+  ✔ should reject paths longer than the limit (2.6352ms)
+  ✔ should reject surrogate pairs split across segments safely (0.3212ms)
+✔ VisionGuard normalizeRelPath (13.0252ms)
+▶ VisionGuard root containment
+  ✔ should resolve and contain paths (3.17ms)
+  ✔ should reject a missing artifact root (0.7583ms)
+✔ VisionGuard root containment (4.1129ms)
+▶ VisionGuard assertNoSymlink
+  ✔ should accept regular files (3.7274ms)
+  ✔ should reject missing files (0.4844ms)
+  ﹣ should reject symbolic links when the platform allows creating them (8.0745ms) # symlink creation unavailable: EPERM
+✔ VisionGuard assertNoSymlink (12.5999ms)
+▶ VisionGuard findPathCollisions
+  ✔ should return empty collisions for distinct paths (1.0651ms)
+  ✔ should ignore exact duplicates (0.1164ms)
+  ✔ should detect NFC collisions (0.2443ms)
+  ✔ should detect case fold collisions without duplicating NFC pairs (0.1538ms)
+  ✔ should not report the same pair as both NFC and case fold (0.1035ms)
+  ✔ should report NFC and case fold pairs independently (0.1014ms)
+  ✔ should reject non array input (0.1138ms)
+✔ VisionGuard findPathCollisions (2.1386ms)
+▶ vision performance: single-pass hashing
+  ✔ should read each dataset file exactly once per register and per verify (8434.5033ms)
+  ✔ should hash the model file only once per full verification run (137.575ms)
+  ✔ should give identical verdicts on repeated verification and leave the store untouched (259.7599ms)
+✔ vision performance: single-pass hashing (8833.026ms)
+▶ vision performance: heavy benchmarks
+  ﹣ should register and repeatedly verify 100000 small files within budget (0.2412ms) # set VG_PERF=1 to run the heavy benchmarks
+  ﹣ should register and verify a few huge sparse files with bounded memory (0.0991ms) # set VG_PERF=1 to run the heavy benchmarks
+✔ vision performance: heavy benchmarks (0.7158ms)
+▶ VisionGuard pipeline identity
+  ✔ should compute a deterministic identity independent of key order (11.6509ms)
+  ✔ should hash identity files from the artifact root (44.5469ms)
+  ✔ should accept precomputed hashes without reading files (0.5097ms)
+  ✔ should require a root when a hash is not supplied (1.429ms)
+  ✔ should reject unsafe identity paths (0.6072ms)
+  ✔ should reject duplicate and unknown fields (0.5945ms)
+  ✔ should enforce metadata limits on parameters (0.8654ms)
+  ﹣ should refuse to hash through a symbolic link (11.1086ms) # symlink creation unavailable: EPERM
+  ✔ should report a missing identity file as unreadable (5.4079ms)
+  ✔ should expose runtime facts without importing untrusted code (22.8344ms)
+  ✔ should sort code files and validate runtime inputs (2.4419ms)
+✔ VisionGuard pipeline identity (109.5873ms)
+▶ VisionGuard pipeline manifests
+  ✔ should register, save and reload a pipeline manifest (34.8655ms)
+  ✔ should sign the manifest when a key file is provided (52.9817ms)
+  ✔ should detect a mismatched signing key (23.7648ms)
+  ✔ should detect a tampered manifest on load (44.7388ms)
+  ✔ should detect an identity that no longer matches pipeline_id (0.7652ms)
+  ✔ should reject wrong kinds, versions and unknown strict fields (30.8979ms)
+✔ VisionGuard pipeline manifests (188.6693ms)
+▶ VisionGuard pipeline verification
+  ✔ should PASS when the registered manifest is intact (29.2508ms)
+  ✔ should PASS when the spec still matches the current files (31.5148ms)
+  ✔ should FAIL when a pipeline file changed (31.4602ms)
+  ✔ should FAIL when the spec cannot be recomputed (33.0686ms)
+  ✔ should FAIL when a supplied manifest is invalid (0.4247ms)
+  ✔ should report NOT_CHECKED for an unregistered pipeline (5.2152ms)
+  ✔ should round trip the manifest through canonical JSON (20.9651ms)
+✔ VisionGuard pipeline verification (152.6415ms)
+▶ VisionGuard provenance record construction
+  ✔ should set record_id equal to record_hash and keep it out of the hash (7.2429ms)
+  ✔ should reject malformed records (2.3477ms)
+  ✔ should enforce metadata depth and size limits while appending (60.7617ms)
+  ✔ should parse logs and report malformed lines with line numbers (1.9249ms)
+  ✔ should parse artifact references loosely and strictly (0.5269ms)
+✔ VisionGuard provenance record construction (74.7904ms)
+▶ VisionGuard contributor registration
+  ✔ should register a contributor with keys and a signed genesis record (40.0877ms)
+  ✔ should clean up key material when registration cannot be appended (22.2629ms)
+✔ VisionGuard contributor registration (62.7652ms)
+▶ VisionGuard operation recording
+  ✔ should append a multi contributor chain with DAG parents (76.8695ms)
+  ✔ should refuse a missing or mismatched private key (22.8804ms)
+  ✔ should refuse an unregistered contributor key (5.5994ms)
+  ✔ should refuse a revoked key and an unauthorized operation (34.2623ms)
+  ✔ should refuse to append to a broken chain (29.5486ms)
+  ✔ should record artifact registrations (33.9765ms)
+✔ VisionGuard operation recording (203.8761ms)
+▶ VisionGuard provenance verification
+  ✔ should report a missing log as NOT_CHECKED (2.4988ms)
+  ✔ should detect an altered record (36.1269ms)
+  ✔ should detect a deleted line as a broken chain (44.2046ms)
+  ✔ should detect reordered lines (47.7826ms)
+  ✔ should detect a duplicated record as replay (41.9821ms)
+  ✔ should detect front truncation against an anchor (48.942ms)
+  ✔ should detect tail truncation against an anchor (52.8132ms)
+  ✔ should detect a forged signature without breaking the hash chain (42.161ms)
+  ✔ should report stripped signatures as UNSIGNED (32.2919ms)
+  ✔ should detect an unknown signer when the key file disappears (28.2398ms)
+  ✔ should detect a substituted key file that keeps the key_id (36.9366ms)
+  ✔ should reject a key that is not pinned by a contributor record (43.3827ms)
+  ✔ should detect an unauthorized operation recorded under a valid key (40.0878ms)
+  ✔ should detect a revoked signer key (41.2392ms)
+  ✔ should detect a missing parent reference (28.6264ms)
+  ✔ should detect a parent pointing at a later record (64.9857ms)
+  ✔ should detect conflicting artifact registrations (39.3184ms)
+  ✔ should cross check registered dataset and model references (80.1583ms)
+  ✔ should warn about unregistered artifact references and stale timestamps (49.0745ms)
+  ✔ should read the expected head from an anchor file (51.7218ms)
+  ✔ should report an unsigned log as UNSIGNED (175.5029ms)
+  ✔ should detect a crash mid write (36.6351ms)
+  ✔ should cap findings per rule (14.1132ms)
+✔ VisionGuard provenance verification (1080.7282ms)
+▶ VisionGuard concurrent provenance appends
+  ✔ should keep the chain valid when writers race (2181.668ms)
+✔ VisionGuard concurrent provenance appends (2182.2609ms)
+▶ vision security: register path guards
+  ✔ should exit 2 when register-data targets a directory outside the project root (24.1637ms)
+  ✔ should exit 2 when register-data targets the project root itself (28.7762ms)
+  ✔ should exit 2 when register-model targets a file outside the project root (28.7216ms)
+✔ vision security: register path guards (83.1902ms)
+▶ vision security: params JSON bombs
+  ✔ should exit 2 when the params file nests past the canonical depth cap (27.1264ms)
+  ✔ should exit 2 when the params file overflows the JSON parser stack (40.4608ms)
+  ✔ should exit 2 before reading an oversized params file (31.9389ms)
+✔ vision security: params JSON bombs (100.091ms)
+▶ vision security: hostile manifest paths
+  ✔ should exit 1 when manifest paths escape the dataset root (462.1073ms)
+  ✔ should exit 1 when manifest paths carry control or bidi characters (315.9243ms)
+  ✔ should exit 1 when a manifest path exceeds the length cap (220.3098ms)
+✔ vision security: hostile manifest paths (1002.0877ms)
+▶ vision security: provenance attacks
+  ✔ should exit 1 with VG-PROV-008 when the log tail is rolled back behind a live anchor (224.7028ms)
+  ✔ should exit 3 as UNANCHORED, never VERIFIED, after rollback without an anchor (297.2332ms)
+  ✔ should exit 3 as UNSIGNED when a signature is stripped, never VERIFIED (402.6437ms)
+  ✔ should exit 1 with VG-PROV-003 when a registered key file is substituted (319.3461ms)
+  ✔ should exit 1 with VG-PROV-006 when a log record is replayed (312.0036ms)
+✔ vision security: provenance attacks (1556.4612ms)
+▶ vision security: races and exhaustion
+  ✔ should detect stats that change while a file is being hashed (1.1807ms)
+  ✔ should reject a model file whose stat drifts from the hashed stat (42.7583ms)
+  ✔ should reject dataset registration past the file count limit (69.261ms)
+  ✔ should reject dataset registration when a file exceeds the size limit (68.23ms)
+  ✔ should keep the store valid when two registrations race (1639.321ms)
+✔ vision security: races and exhaustion (1821.9186ms)
+▶ VisionGuard store layout
+  ✔ should create the full store directory tree (9.4722ms)
+  ✔ should reject an empty store directory (0.9003ms)
+  ✔ should build manifest paths only from validated name and version (0.7327ms)
+✔ VisionGuard store layout (12.9489ms)
+▶ VisionGuard atomic manifest writes
+  ✔ should write content and leave no temp files behind (10.9979ms)
+  ✔ should replace an existing file atomically (21.0791ms)
+  ✔ should clean up the temp file when the rename target cannot be replaced (10.0409ms)
+✔ VisionGuard atomic manifest writes (42.5994ms)
+▶ VisionGuard manifest save and load
+  ✔ should save and load a manifest round trip (28.231ms)
+  ✔ should overwrite an existing manifest on re-registration (33.6748ms)
+  ✔ should report unregistered datasets (5.245ms)
+  ✔ should enforce the manifest size limit on save and load (31.7247ms)
+  ✔ should reject malformed stored manifests (55.0168ms)
+  ﹣ should refuse to load a manifest reached through a symbolic link (88.079ms) # symlink creation unavailable: EPERM
+  ✔ should save and load a model manifest by id and version (36.0151ms)
+✔ VisionGuard manifest save and load (278.9108ms)
+▶ VisionGuard store containment guard
+  ✔ should reject a store inside the dataset root (4.219ms)
+  ✔ should allow a store outside the dataset root (2.6166ms)
+  ✔ should block registration when the store would live inside the dataset (21.7741ms)
+✔ VisionGuard store containment guard (28.9396ms)
+▶ VisionGuard store metadata
+  ✔ should save and load store.json with a verified record hash (43.3866ms)
+  ✔ should detect a tampered store.json (21.2972ms)
+  ✔ should reject wrong kinds, versions and malformed content (48.3075ms)
+✔ VisionGuard store metadata (113.2888ms)
+▶ VisionGuard provenance log lock
+  ✔ should hold the lock while running and release it afterwards (26.2098ms)
+  ✔ should refuse a fresh lock held elsewhere (65.9762ms)
+  ✔ should steal a stale lock (10.6032ms)
+  ✔ should release the lock when the callback throws (39.0444ms)
+✔ VisionGuard provenance log lock (142.3824ms)
+▶ VisionGuard provenance log writes
+  ✔ should append lines separated by newlines (42.6373ms)
+  ✔ should reject empty lines and embedded newlines (18.895ms)
+  ✔ should enforce the log size limit on append and read (33.8851ms)
+  ✔ should report a missing log and reject a non file log (5.7471ms)
+  ﹣ should refuse to read or append through a symbolic link (163.4711ms) # symlink creation unavailable: EPERM
+✔ VisionGuard provenance log writes (265.1167ms)
+▶ overallVerdict truth table
+  ✔ should expose exactly the six required dimensions (2.6462ms)
+  ✔ should return VERIFIED only when every dimension is PASS (1.7674ms)
+  ✔ should return INTEGRITY VIOLATION when any dimension is FAIL (0.4215ms)
+  ✔ should return INCOMPLETE when any required dimension is not PASS and none is FAIL (0.5343ms)
+  ✔ should return INCOMPLETE for empty or partial dimension sets (0.2561ms)
+✔ overallVerdict truth table (11.0715ms)
+▶ status helpers
+  ✔ should normalize statuses from strings, objects and missing values (0.2935ms)
+  ✔ should rank worst status as FAIL > UNSIGNED/UNANCHORED > NOT_CHECKED > PASS (0.3732ms)
+  ✔ should map non-PASS provenance-style statuses to INCOMPLETE not VERIFIED (0.5962ms)
+✔ status helpers (1.6461ms)
+▶ VisionGuard walkDataset
+  ✔ should walk nested directories and include image files (35.7435ms)
+  ✔ should return entries sorted by path (14.8795ms)
+  ✔ should handle an empty directory (2.337ms)
+  ✔ should reject a missing root (1.9015ms)
+  ﹣ should exclude symlinks with a policy finding in verify mode (13.5781ms) # symlink creation unavailable: EPERM
+  ﹣ should throw on symlinks in strict register mode (4.3659ms) # symlink creation unavailable: EPERM
+  ﹣ should skip special files with a policy finding (0.4754ms) # fifo creation is unavailable on Windows
+  ✔ should apply extension policy case-insensitively (14.9297ms)
+  ✔ should accept every file with the default wildcard policy (9.6043ms)
+  ✔ should cap stored findings per rule while keeping accurate counts (300.6542ms)
+  ✔ should enforce the file count limit (9.5423ms)
+  ✔ should enforce the file size limit (6.3879ms)
+  ✔ should enforce the total byte limit (6.1943ms)
+  ✔ should enforce the depth limit (18.5965ms)
+  ✔ should enforce the directory count limit (20.1415ms)
+  ﹣ should collect unreadable files in verify mode instead of throwing (0.2409ms) # read permissions are not enforced for the owner on Windows
+  ﹣ should reject backslash filenames (0.1437ms) # backslashes are path separators on Windows
+  ✔ should treat a disappeared file between readdir and lstat as unreadable in verify mode (6.301ms)
+✔ VisionGuard walkDataset (469.6103ms)
+▶ VisionGuard normalizePolicy
+  ✔ should return the default policy for empty input (0.1296ms)
+  ✔ should normalize and dedupe extensions (0.1311ms)
+  ✔ should reject invalid policies (0.4847ms)
+✔ VisionGuard normalizePolicy (0.8916ms)
+ℹ tests 819
+ℹ suites 166
+ℹ pass 798
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 18
+ℹ todo 0
+ℹ duration_ms 32649.7384
+
+✖ failing tests:
+
+test at tests\integration\pipeline.test.js:203:5
+✖ should work with mock OpenRouter AI client and default factory (4.0193ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'MEDIUM' !== 'HIGH'
+  
+      at TestContext.<anonymous> (C:\Users\91797\Downloads\codesentry-main (1)\codesentry-main\CodeSentry\tests\integration\pipeline.test.js:226:14)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'MEDIUM',
+    expected: 'HIGH',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\unit\cli\auth.test.js:160:5
+✖ should return isConfigured: true if OPENROUTER_API_KEY is already set (2.0752ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'your_openrouter_api_key_here'
+  - 'sk-or-v1-existing'
+  
+      at TestContext.<anonymous> (C:\Users\91797\Downloads\codesentry-main (1)\codesentry-main\CodeSentry\tests\unit\cli\auth.test.js:164:14)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1771:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'your_openrouter_api_key_here',
+    expected: 'sk-or-v1-existing',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\unit\cli\auth.test.js:174:5
+✖ should skip non-interactively in jsonMode without hanging (0.8048ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (C:\Users\91797\Downloads\codesentry-main (1)\codesentry-main\CodeSentry\tests\unit\cli\auth.test.js:177:14)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

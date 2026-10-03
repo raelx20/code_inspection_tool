@@ -1,0 +1,63 @@
+{
+  "name": "codesentry-ai",
+  "version": "0.2.2",
+  "description": "CLI-based codebase inspection and DevSecOps tool with AI-powered analysis",
+  "main": "src/core/scan.js",
+  "bin": {
+    "codesentry": "bin/codesentry.js",
+    "codesentry-ai": "bin/codesentry.js"
+  },
+  "preferGlobal": true,
+  "files": [
+    "bin/",
+    "src/",
+    "package.json",
+    "README.md",
+    ".env.example"
+  ],
+  "scripts": {
+    "start": "node bin/codesentry.js",
+    "scan": "node bin/codesentry.js scan",
+    "deployguard": "node bin/codesentry.js deployguard",
+    "demo": "node bin/codesentry.js demo",
+    "test": "node scripts/test-runner.js all",
+    "test:unit": "node scripts/test-runner.js unit",
+    "test:integration": "node scripts/test-runner.js integration",
+    "test:analyzers": "node scripts/test-runner.js analyzers"
+  },
+  "keywords": [
+    "codesentry",
+    "code-analysis",
+    "security",
+    "devsecops",
+    "static-analysis",
+    "ai",
+    "openrouter",
+    "linter",
+    "cli",
+    "npx"
+  ],
+  "author": "CodeSentry Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raelx20/codesentry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raelx20/codesentry/issues"
+  },
+  "homepage": "https://github.com/raelx20/codesentry#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "os": [
+    "win32",
+    "linux",
+    "darwin"
+  ],
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}
