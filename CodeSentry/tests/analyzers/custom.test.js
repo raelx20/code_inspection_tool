@@ -200,6 +200,16 @@ describe('Custom Analyzers', () => {
       const ev = findings.filter(f => f.rule === 'py-code-injection');
       assert.ok(ev.length > 0, 'should detect Python eval');
     });
+
+    it('should not flag lowercase identifiers that resemble SQL keywords', () => {
+      const content = [
+        'const key = `${from}|${to}|TRUSTS`;',
+        'const snippet = `${name}.delete(${name}.keys().next().value)`;',
+      ].join('\n');
+      const findings = analyzeSecurity('src/sample.js', content);
+      const sqli = findings.filter(f => f.rule && f.rule.includes('sql-injection'));
+      assert.equal(sqli.length, 0, 'JS identifiers like from/delete must not trigger SQL injection rules');
+    });
   });
 
   describe('Finding Structure', () => {

@@ -94,9 +94,21 @@ function analyzeModelShield(files = [], projectPath = '') {
 
     for (const rule of MODELSHIELD_RULES) {
       if (rule.multiline) {
-        if (rule.pattern.test(content)) {
-          const sinkIdx = lines.findIndex((l) => /(?:eval\(|exec\(|subprocess\.run\(|child_process\.exec\()/.test(l));
-          const lineIdx = sinkIdx !== -1 ? sinkIdx : 0;
+        // Require the code-exec sink to appear within a few lines of a
+        // tool/agent mention. A file-wide pattern lets the word "agent"
+        // anywhere in a file flag an unrelated dynamic-code call hundreds
+        // of lines later (false positive on e.g. prose/explanation strings).
+        const SINK_PATTERN = /(?:eval\(|exec\(|subprocess\.run\(|child_process\.exec\()/;
+        const SOURCE_PATTERN = /(?:tool|agent|function_call)/i;
+        const PROXIMITY_WINDOW = 5;
+        const lineIdx = lines.findIndex((line, idx) => {
+          if (!SINK_PATTERN.test(line)) return false;
+          for (let j = Math.max(0, idx - PROXIMITY_WINDOW); j <= idx; j++) {
+            if (SOURCE_PATTERN.test(lines[j])) return true;
+          }
+          return false;
+        });
+        if (lineIdx !== -1) {
           findings.push(
             createFinding({
               tool: 'modelshield',

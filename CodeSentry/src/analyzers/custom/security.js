@@ -51,8 +51,10 @@ function analyzeSecurity(filePath, content) {
 
 function checkJsSqlInjection(line, lineNum, findings, filePath) {
   // Query with template literals: db.query(`SELECT ... ${...}`) or const query = `SELECT ... ${...}`
+  // SQL keywords must be UPPERCASE (case-sensitive match) so ordinary JS
+  // identifiers like `${from}` or `.delete(` are not mistaken for SQL.
   if (/(?:db|connection|pool|client)\.(?:query|execute)\s*\(\s*`[^`]*\$\{[^}]+\}/i.test(line) ||
-      /(?:const|let|var)\s+\w+\s*=\s*`[^`]*\b(?:SELECT|INSERT|UPDATE|DELETE|FROM|WHERE)\b[^`]*\$\{[^}]+\}/i.test(line)) {
+      /(?:const|let|var)\s+\w+\s*=\s*`[^`]*\b(?:SELECT|INSERT|UPDATE|DELETE|FROM|WHERE)\b[^`]*\$\{[^}]+\}/.test(line)) {
     findings.push({
       file: filePath,
       line: lineNum,
