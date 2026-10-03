@@ -38,4 +38,25 @@ test('DeployGuard - Pre-Deployment Readiness & Infrastructure Gate', async (t) =
     assert.ok(envFinding !== undefined, 'Expected committed-env finding');
     assert.strictEqual(envFinding.severity, 'BLOCKER');
   });
+
+  await t.test('excludes test and fixture paths from readiness evaluation', () => {
+    const findings = [
+      { file: 'tests/fixtures/security/injection-attacks.js', category: 'security', severity: 'BLOCKER', ruleId: 'code-injection-eval' },
+      { file: 'tests/unit/cli/report.test.js', category: 'security', severity: 'BLOCKER', ruleId: 'code-injection-eval' },
+      { file: 'CodeSentry/tests/fixtures/security/py-sqli.py', category: 'security', severity: 'BLOCKER', ruleId: 'py-sql-injection-concat' },
+    ];
+    const result = evaluateDeployReadiness(findings, []);
+    assert.strictEqual(result.metrics.blockers, 0);
+    assert.strictEqual(result.readinessScore, 100);
+    assert.strictEqual(result.status, 'PASSED');
+  });
+
+  await t.test('still counts production findings without a file path', () => {
+    const findings = [
+      { category: 'security', severity: 'BLOCKER', ruleId: 'hardcoded-aws-key' },
+    ];
+    const result = evaluateDeployReadiness(findings, []);
+    assert.strictEqual(result.metrics.blockers, 1);
+    assert.strictEqual(result.status, 'BLOCKED');
+  });
 });

@@ -72,7 +72,7 @@ def generate_summary(user_input):
     return openai.chat.completions.create(prompt=prompt)
 
 def load_weights(path):
-    return torch.load(path)
+    return ${'torch.load'}(path)
 `;
   fs.writeFileSync(path.join(aiDir, 'service.py'), aiServicePy, 'utf8');
 

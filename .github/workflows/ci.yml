@@ -83,7 +83,7 @@ jobs:
         run: npm install
 
       - name: Run DeployGuard Production Readiness Gate
-        run: node CodeSentry/bin/codesentry.js deployguard .
+        run: node CodeSentry/bin/codesentry.js deployguard . --gate
 
       - name: Run CodeSentry Blocker Security Gate
         run: node CodeSentry/bin/codesentry.js scan . --no-ai --severity BLOCKER --gate

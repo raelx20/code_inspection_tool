@@ -385,6 +385,10 @@ async function main() {
         // Determine exit code
         if (result.metadata.errors.length > 0) {
           lastExitCode = 2;
+        } else if (parsed.options.gate) {
+          // Gate mode: only BLOCKED fails (enforced above at the gate check).
+          // Informational findings must not fail CI just for existing.
+          lastExitCode = 0;
         } else if (result.aggregation.total > 0) {
           lastExitCode = 1;
         } else {

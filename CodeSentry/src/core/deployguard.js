@@ -3,11 +3,18 @@
  */
 
 function evaluateDeployReadiness(findings = [], files = []) {
+  // Test & fixture code is never deployed to production, so it must not
+  // affect the production readiness gate (deliberately vulnerable samples
+  // live under tests/fixtures and would otherwise permanently block).
+  const NON_PRODUCTION_PATH =
+    /(^|\/)(tests?|__tests__|fixtures|__fixtures__|spec|__specs__|node_modules)(\/|$)|\.(test|spec)\.[^/]+$/i;
+
   const deployFindings = findings.filter(
     (f) =>
-      f.tool === 'deployguard' ||
-      f.category === 'security' ||
-      (f.ruleId && f.ruleId.startsWith('deployguard-'))
+      (f.tool === 'deployguard' ||
+        f.category === 'security' ||
+        (f.ruleId && f.ruleId.startsWith('deployguard-'))) &&
+      !(f.file && NON_PRODUCTION_PATH.test(f.file))
   );
 
   let blockerCount = 0;
